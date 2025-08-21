@@ -1,0 +1,94 @@
+<div class="tasks-container">
+  <div class="tasks-header">
+    <h2>My Tasks</h2>
+    <a routerLink="/tasks/add" class="add-task-button">
+      + Add New Task
+    </a>
+  </div>
+
+  <div *ngIf="error" class="error-message">
+    {{ error }}
+  </div>
+
+  <div class="tasks-filters">
+    <div class="filter-group">
+      <label for="priority-filter">Priority:</label>
+      <select
+        id="priority-filter"
+        [(ngModel)]="priorityFilter"
+        (change)="applyFilters()"
+      >
+        <option value="ALL">All Priorities</option>
+        <option value="HIGH">High</option>
+        <option value="MEDIUM">Medium</option>
+        <option value="LOW">Low</option>
+      </select>
+    </div>
+
+    <div class="filter-group">
+      <label for="completion-filter">Status:</label>
+      <select
+        id="completion-filter"
+        [(ngModel)]="completionFilter"
+        (change)="applyFilters()"
+      >
+        <option value="ALL">All Tasks</option>
+        <option value="COMPLETED">Completed</option>
+        <option value="PENDING">Pending</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="tasks-list">
+    <ng-container *ngIf="filteredTasks.length > 0; else noTasks">
+      <div *ngFor="let task of filteredTasks" class="task-card" [class.completed]="task.completed">
+        <div class="task-content">
+          <div class="task-header">
+            <h3>{{ task.title }}</h3>
+            <span class="priority-badge" [class.high]="task.priority === 'HIGH'"
+                                      [class.medium]="task.priority === 'MEDIUM'"
+                                      [class.low]="task.priority === 'LOW'">
+              {{ task.priority }}
+            </span>
+          </div>
+          <p class="task-description">{{ task.description }}</p>
+          <div class="task-meta">
+            <span class="due-date">
+              Due: {{ task.dueDate | date:'mediumDate' }}
+            </span>
+            <span class="created-at">
+              Created: {{ task.createdAt | date:'mediumDate' }}
+            </span>
+          </div>
+        </div>
+        <div class="task-actions">
+          <button
+            (click)="toggleComplete(task)"
+            class="complete-button"
+            [class.completed]="task.completed"
+          >
+            {{ task.completed ? '✓ Completed' : 'Mark Complete' }}
+          </button>
+          <a
+            [routerLink]="['/tasks/edit', task.id]"
+            class="edit-button"
+          >
+            Edit
+          </a>
+        </div>
+      </div>
+    </ng-container>
+
+    <ng-template #noTasks>
+      <div class="no-tasks">
+        <p>No tasks found matching your filters.</p>
+        <button
+          class="reset-filters-button"
+          (click)="resetFilters()"
+        >
+          Reset Filters
+        </button>
+      </div>
+    </ng-template>
+  </div>
+</div>

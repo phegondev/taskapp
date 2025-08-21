@@ -1,0 +1,18 @@
+<nav>
+    <div class="logo">
+        <a routerLink="/" class="logo-link"> Task Manager</a>
+    </div>
+
+    <div class="content">
+
+        <ng-container *ngIf="isAuthenticated; else unauthenticated ">
+            <a routerLink="/tasks" class="nav-link">My Tasks</a>
+            <button (click)="handleLogout()" class="nav-button">Logout</button>
+        </ng-container>
+
+        <ng-template #unauthenticated>
+            <a routerLink="/login" class="nav-link">Login</a>
+            <a routerLink="/register" class="nav-link">Register</a>
+        </ng-template>
+    </div>
+</nav>

@@ -1,0 +1,87 @@
+<div class="task-form-container">
+  <h2>{{ isEdit ? 'Edit Task' : 'Add New Task' }}</h2>
+
+  <div *ngIf="error" class="error-message">
+   {{ error }}
+  </div>
+
+  <form [formGroup]="taskForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="title">Title*</label>
+      <input
+        type="text"
+        id="title"
+        formControlName="title"
+        placeholder="Enter task title"
+        [ngClass]="{'invalid': taskForm.get('title')?.invalid && taskForm.get('title')?.touched}"
+      >
+      <span *ngIf="taskForm.get('title')?.invalid && taskForm.get('title')?.touched" class="error-text">
+        Title is required
+      </span>
+    </div>
+
+    <div class="form-group">
+      <label for="description">Description</label>
+      <textarea
+        id="description"
+        formControlName="description"
+        placeholder="Enter task description"
+        rows="4"
+      ></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="dueDate">Due Date</label>
+      <input
+        type="date"
+        id="dueDate"
+        formControlName="dueDate"
+      >
+    </div>
+
+    <div class="form-group">
+      <label for="priority">Priority</label>
+      <select
+        id="priority"
+        formControlName="priority"
+      >
+        <option value="HIGH">High</option>
+        <option value="MEDIUM">Medium</option>
+        <option value="LOW">Low</option>
+      </select>
+    </div>
+
+    <div *ngIf="isEdit" class="form-group checkbox-group">
+      <input
+        type="checkbox"
+        id="completed"
+        formControlName="completed"
+      >
+      <label for="completed">Completed</label>
+    </div>
+
+    <div class="form-actions">
+      <button type="submit" class="save-button">
+        {{ isEdit ? 'Update Task' : 'Create Task' }}
+      </button>
+
+      <div *ngIf="isEdit" class="edit-actions">
+        <button
+          type="button"
+          class="delete-button"
+          (click)="onDelete()"
+        >
+          Delete
+        </button>
+
+        <button
+          type="button"
+          class="cancel-button"
+          routerLink="/tasks"
+        >
+          Cancel
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

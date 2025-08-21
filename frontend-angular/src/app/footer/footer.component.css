@@ -1,0 +1,31 @@
+footer {
+ background-color: #333;
+ color: white;
+ padding: 20px 0;
+ text-align: center;
+ margin-top: 20px;
+}
+
+.content {
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+}
+
+.links {
+ margin-top: 10px;
+ display: flex;
+ gap: 20px;
+}
+
+.link {
+ color: white;
+ text-decoration: none;
+ transition: color 0.3s ease;
+}
+
+.footer-link:hover {
+ color: #ffcc80;
+}
+
+

@@ -1,0 +1,269 @@
+.tasks-container {
+ max-width: 1000px;
+ margin: 0 auto;
+ padding: 30px;
+ background-color: #f8fafc;
+ min-height: calc(100vh - 120px);
+}
+
+.tasks-header {
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ margin-bottom: 30px;
+ padding-bottom: 15px;
+ border-bottom: 1px solid #e2e8f0;
+}
+
+.tasks-header h2 {
+ color: #1e293b;
+ font-size: 28px;
+ font-weight: 600;
+ margin: 0;
+}
+
+.add-task-button {
+ background-color: #13a1ae;
+ color: white;
+ padding: 10px 20px;
+ border-radius: 6px;
+ text-decoration: none;
+ font-weight: 500;
+ transition: all 0.3s ease;
+ display: inline-flex;
+ align-items: center;
+ gap: 8px;
+}
+
+.add-task-button:hover {
+ background-color: #0f8a96;
+ transform: translateY(-2px);
+ box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.error-message {
+ color: #dc2626;
+ background-color: #fef2f2;
+ padding: 12px 16px;
+ border-radius: 6px;
+ margin-bottom: 20px;
+ font-size: 14px;
+ display: flex;
+ align-items: center;
+ gap: 8px;
+}
+
+.tasks-filters {
+ display: flex;
+ gap: 30px;
+ margin-bottom: 30px;
+ padding: 20px;
+ background-color: white;
+ border-radius: 8px;
+ box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.filter-group {
+ display: flex;
+ align-items: center;
+ gap: 10px;
+}
+
+.filter-group label {
+ font-weight: 500;
+ color: #475569;
+ font-size: 14px;
+}
+
+.filter-group select {
+ padding: 8px 16px;
+ border: 1px solid #e2e8f0;
+ border-radius: 6px;
+ background-color: white;
+ font-size: 14px;
+ transition: all 0.2s ease;
+ cursor: pointer;
+}
+
+.filter-group select:focus {
+ border-color: #13a1ae;
+ outline: none;
+ box-shadow: 0 0 0 3px rgba(19, 161, 174, 0.1);
+}
+
+.tasks-list {
+ display: grid;
+ gap: 20px;
+}
+
+.task-card {
+ background-color: white;
+ border-radius: 8px;
+ box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+ padding: 24px;
+ transition: all 0.3s ease;
+ border-left: 4px solid transparent;
+}
+
+.task-card:hover {
+ transform: translateY(-3px);
+ box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.task-card.completed {
+ border-left-color: #10b981;
+ opacity: 0.8;
+}
+
+.task-content {
+ margin-bottom: 20px;
+}
+
+.task-header {
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ margin-bottom: 12px;
+}
+
+.task-header h3 {
+ margin: 0;
+ color: #1e293b;
+ font-size: 18px;
+ font-weight: 600;
+}
+
+.task-description {
+ color: #64748b;
+ margin-bottom: 15px;
+ line-height: 1.6;
+}
+
+.task-meta {
+ display: flex;
+ gap: 20px;
+ font-size: 14px;
+ color: #94a3b8;
+}
+
+.priority-badge {
+ padding: 4px 12px;
+ border-radius: 12px;
+ font-size: 12px;
+ font-weight: 600;
+ text-transform: uppercase;
+}
+
+.priority-badge.high {
+ background-color: #fecaca;
+ color: #b91c1c;
+}
+
+.priority-badge.medium {
+ background-color: #fed7aa;
+ color: #c2410c;
+}
+
+.priority-badge.low {
+ background-color: #bbf7d0;
+ color: #166534;
+}
+
+.task-actions {
+ display: flex;
+ gap: 12px;
+ border-top: 1px solid #f1f5f9;
+ padding-top: 16px;
+}
+
+.complete-button {
+ padding: 8px 16px;
+ border: none;
+ border-radius: 6px;
+ cursor: pointer;
+ font-size: 14px;
+ font-weight: 500;
+ transition: all 0.2s ease;
+}
+
+.complete-button {
+ background-color: #f1f5f9;
+ color: #334155;
+}
+
+.complete-button.completed {
+ background-color: #10b981;
+ color: white;
+}
+
+.complete-button:hover {
+ background-color: #e2e8f0;
+}
+
+.complete-button.completed:hover {
+ background-color: #0d9c6e;
+}
+
+.edit-button {
+ padding: 8px 16px;
+ background-color: #13a1ae;
+ color: white;
+ text-decoration: none;
+ border-radius: 6px;
+ font-size: 14px;
+ font-weight: 500;
+ transition: all 0.2s ease;
+}
+
+.edit-button:hover {
+ background-color: #0f8a96;
+}
+
+.no-tasks {
+ text-align: center;
+ padding: 40px;
+ background-color: white;
+ border-radius: 8px;
+ box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.no-tasks p {
+ color: #64748b;
+ margin-bottom: 20px;
+ font-size: 16px;
+}
+
+.reset-filters-button {
+ background-color: #f1f5f9;
+ color: #334155;
+ padding: 10px 20px;
+ border: none;
+ border-radius: 6px;
+ cursor: pointer;
+ font-size: 14px;
+ font-weight: 500;
+ transition: all 0.2s ease;
+}
+
+.reset-filters-button:hover {
+ background-color: #e2e8f0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+ .tasks-filters {
+   flex-direction: column;
+   gap: 15px;
+ }
+
+ .task-actions {
+   flex-direction: column;
+ }
+
+ .complete-button, .edit-button {
+   width: 100%;
+   text-align: center;
+ }
+}
+
+
